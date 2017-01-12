@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextureView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/texture_view"
+        android:layout_width="1080px"
+        android:layout_height="1440px"
+        tools:context="com.bq.openglcamera.MainActivity">
+
+</TextureView>
