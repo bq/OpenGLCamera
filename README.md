@@ -18,11 +18,3 @@ This project is licensed under the Apache Software License, Version 2.0.
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
-
-
- [1]: http://square.github.com/otto/
- [2]: https://github.com/greenrobot/EventBus
- [3]: https://github.com/ReactiveX/RxJava
- [4]: http://opensource.bq.com/autobus/
- [5]: http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.bq%22%20AND%20a%3A%22autobus%22
- [snap]: https://oss.sonatype.org/content/repositories/snapshots/
