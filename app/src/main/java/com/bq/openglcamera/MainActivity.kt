@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
     var surface: Surface? = null
 
     lateinit var textureView: TextureView
-    lateinit var surfaceTexture: SurfaceTexture
+    var surfaceTexture: SurfaceTexture? = null
 
     val backgroundThread = HandlerThread("bg")
     lateinit var backgroundHandler: Handler
@@ -96,13 +96,15 @@ class MainActivity : AppCompatActivity() {
     private fun openCamera() {
         if (!canOpenCamera) return
         if (!textureView.isAvailable) return
+        if (surfaceTexture == null) return
+        if (cameraDevice != null) return
 
         cameraManager = getSystemService(Context.CAMERA_SERVICE) as CameraManager
         cameraManager!!.openCamera("0", object : CameraDevice.StateCallback() {
             override fun onOpened(camera: CameraDevice) {
                 this@MainActivity.cameraDevice = cameraDevice
                 this@MainActivity.surface = Surface(surfaceTexture)
-                surfaceTexture.setDefaultBufferSize(textureView.width, textureView.height)
+                surfaceTexture?.setDefaultBufferSize(textureView.width, textureView.height)
                 val req = camera.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW)
                 req.addTarget(surface)
 
@@ -132,7 +134,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun closeCamera() {
         session?.close()
+        session = null
         cameraDevice?.close()
-        surface?.release()
+        cameraDevice = null
+        surfaceTexture = null
     }
 }
